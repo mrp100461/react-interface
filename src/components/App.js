@@ -58,6 +58,7 @@ const App = () => {
   useEffect(() => {
     const getAppointments = async () => {
       try {
+        setLoading(true);
         const response = await fetch('./data.json');
         const result = await response.json();
         const apps = result.map((item, id) => {
@@ -65,7 +66,6 @@ const App = () => {
           setLastIndex(item.aptId + 1);
           return item;
         });
-        setLoading(true);
         setAppointments(apps);
         return setLoading(false);
       } catch (value_3) {
